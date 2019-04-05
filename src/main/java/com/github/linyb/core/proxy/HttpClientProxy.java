@@ -9,6 +9,17 @@ import org.slf4j.LoggerFactory;
 
 import com.github.linyb.core.enu.HttpMethod;
 
+/**
+ * 
+ * <p>
+ * Title:HttpClientProxy
+ * </p>
+ * <p>
+ * Description: JDK http代理
+ * </p>
+ * 
+ * @author linyb
+ */
 public class HttpClientProxy extends BaseHttpClientProxy implements InvocationHandler {
 	private static Logger logger = LoggerFactory.getLogger(HttpClientProxy.class);
 

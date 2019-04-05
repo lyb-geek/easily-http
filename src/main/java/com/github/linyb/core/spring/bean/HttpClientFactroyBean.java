@@ -4,6 +4,20 @@ import org.springframework.beans.factory.FactoryBean;
 
 import com.github.linyb.core.util.HttpClientServiceUtil;
 
+/**
+ * 
+ * <p>
+ * Title:HttpClientFactroyBean
+ * </p>
+ * <p>
+ * Description: 创建动态代理Bean
+ * </p>
+ * <p>
+ * Company:
+ * </p>
+ * 
+ * @author linyb
+ */
 public class HttpClientFactroyBean<T> implements FactoryBean<T> {
 
 	public static final String field_httpClientServiceBeanClz = "httpClientServiceBeanClz";

@@ -22,6 +22,17 @@ import com.github.linyb.core.enu.MimeType;
 import com.github.linyb.core.util.HttpClientUtil;
 import com.github.linyb.exception.EasyHttpException;
 
+/**
+ * 
+ * <p>
+ * Title:BaseHttpClientProxy
+ * </p>
+ * <p>
+ * Description: 调用http请求代理基类
+ * </p>
+ * 
+ * @author linyb
+ */
 public class BaseHttpClientProxy {
 
 	private static final String JSON_OBJ_PREFIX = "{";
@@ -52,6 +63,15 @@ public class BaseHttpClientProxy {
 		this.url = url;
 	}
 
+	/**
+	 * 调用http逻辑实现
+	 * 
+	 * @param proxy
+	 * @param method
+	 * @param args
+	 * @return
+	 * @throws Throwable
+	 */
 	public Object doService(Object proxy, Method method, Object[] args) throws Throwable {
 		setHttpInfoByHttpClient(proxy);
 
@@ -201,6 +221,13 @@ public class BaseHttpClientProxy {
 		}
 	}
 
+	/**
+	 * get请求
+	 * 
+	 * @param method
+	 * @param param
+	 * @return
+	 */
 	private Object doGet(Method method, Map<String, String> param) {
 		try {
 			String jsonResult = HttpClientUtil.doGet(url, param);
@@ -215,6 +242,13 @@ public class BaseHttpClientProxy {
 
 	}
 
+	/**
+	 * 返回结果封装
+	 * 
+	 * @param method
+	 * @param jsonResult
+	 * @return
+	 */
 	private Object getResult(Method method, String jsonResult) {
 		Object result = null;
 		HttpReqMethod httpReqMethod = method.getAnnotation(HttpReqMethod.class);
@@ -237,6 +271,13 @@ public class BaseHttpClientProxy {
 		return result;
 	}
 
+	/**
+	 * post请求
+	 * 
+	 * @param method
+	 * @param param
+	 * @return
+	 */
 	private Object doPost(Method method, Map<String, String> param) {
 		try {
 			String jsonResult = HttpClientUtil.doPost(url, param);
@@ -250,6 +291,13 @@ public class BaseHttpClientProxy {
 
 	}
 
+	/**
+	 * post请求参数为json
+	 * 
+	 * @param method
+	 * @param param
+	 * @return
+	 */
 	private Object doPostJSON(Method method, Map<String, String> param) {
 		try {
 			String listParamsJSONValue = param.get(HTTP_LIST_REQUEST_PARAMS);
@@ -271,20 +319,13 @@ public class BaseHttpClientProxy {
 
 	}
 
-	private Object doPostList(Method method, Map<String, Object> param) {
-		try {
-			String jsonReqParam = JSON.toJSONString(param);
-			String jsonResult = HttpClientUtil.doPostJson(url, jsonReqParam);
-			Object result = getResult(method, jsonResult);
-			return result;
-		} catch (Exception e) {
-			logger.error(method.getName() + " error:" + e.getMessage(), e);
-		}
-
-		return null;
-
-	}
-
+	/**
+	 * 返回值不是JSON格式的参数封装
+	 * 
+	 * @param method
+	 * @param jsonResult
+	 * @return
+	 */
 	private Object getNotJsonResult(Method method, String jsonResult) {
 		if (StringUtil.isBlank(jsonResult)) {
 			return jsonResult;
@@ -366,7 +407,7 @@ public class BaseHttpClientProxy {
 	}
 
 	/**
-	 * 字符串装数组
+	 * 把返回值为字符串转数组
 	 * 
 	 * @return
 	 */

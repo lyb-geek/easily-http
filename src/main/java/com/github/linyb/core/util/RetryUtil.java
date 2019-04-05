@@ -7,10 +7,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 重试工具类
  * 
- * @author linyb1
- *
+ * <p>
+ * Title:RetryUtil
+ * </p>
+ * <p>
+ * Description: 重试工具类
+ * </p>
+ * 
+ * @author linyb
  */
 public class RetryUtil {
 	private static final Logger logger = LoggerFactory.getLogger(RetryUtil.class);

@@ -1,6 +1,17 @@
 
 package com.github.linyb.exception;
 
+/**
+ * 
+ * <p>
+ * Title:EasyHttpException
+ * </p>
+ * <p>
+ * Description: 自定义异常
+ * </p>
+ * 
+ * @author linyb
+ */
 public class EasyHttpException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 

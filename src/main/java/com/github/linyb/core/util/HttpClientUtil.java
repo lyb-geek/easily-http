@@ -24,6 +24,17 @@ import org.slf4j.LoggerFactory;
 
 import com.github.linyb.common.util.StringUtil;
 
+/**
+ * 
+ * <p>
+ * Title:HttpClientUtil
+ * </p>
+ * <p>
+ * Description: http客户端调用工具类
+ * </p>
+ * 
+ * @author linyb
+ */
 public class HttpClientUtil {
 	private static Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
 

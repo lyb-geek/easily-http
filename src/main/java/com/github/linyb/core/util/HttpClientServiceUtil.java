@@ -6,6 +6,17 @@ import org.slf4j.LoggerFactory;
 import com.github.linyb.core.proxy.HttpClientCglibProxy;
 import com.github.linyb.core.proxy.HttpClientProxy;
 
+/**
+ * 
+ * <p>
+ * Title:HttpClientServiceUtil
+ * </p>
+ * <p>
+ * Description: http接口服务实现工具类
+ * </p>
+ * 
+ * @author linyb
+ */
 public class HttpClientServiceUtil {
 	private static Logger logger = LoggerFactory.getLogger(HttpClientServiceUtil.class);
 

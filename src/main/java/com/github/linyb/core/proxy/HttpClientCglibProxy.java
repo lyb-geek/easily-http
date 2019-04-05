@@ -8,6 +8,17 @@ import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
+/**
+ * 
+ * <p>
+ * Title:HttpClientCglibProxy
+ * </p>
+ * <p>
+ * Description: cglib http请求代理
+ * </p>
+ * 
+ * @author linyb
+ */
 public class HttpClientCglibProxy extends BaseHttpClientProxy implements MethodInterceptor {
 
 	public HttpClientCglibProxy(HttpMethod httpMethod, String url) {

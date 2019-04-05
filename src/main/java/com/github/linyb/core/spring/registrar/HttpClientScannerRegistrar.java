@@ -28,6 +28,17 @@ import com.github.linyb.core.annotation.EnableHttpClients;
 import com.github.linyb.core.annotation.HttpClient;
 import com.github.linyb.core.spring.bean.HttpClientFactroyBean;
 
+/**
+ * 
+ * <p>
+ * Title:HttpClientScannerRegistrar
+ * </p>
+ * <p>
+ * Description: httpclient注解扫描实现，并把有加httpclient注解的类注册到spring容器中
+ * </p>
+ * 
+ * @author linyb
+ */
 public class HttpClientScannerRegistrar
 		implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, BeanClassLoaderAware, EnvironmentAware {
 	private static Logger logger = LoggerFactory.getLogger(HttpClientScannerRegistrar.class);
@@ -56,6 +67,9 @@ public class HttpClientScannerRegistrar
 		this.environment = environment;
 	}
 
+	/**
+	 * httpclient扫描注入bean
+	 */
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
 
@@ -77,6 +91,12 @@ public class HttpClientScannerRegistrar
 
 	}
 
+	/**
+	 * 获取有配置httpclient注解类的父级包
+	 * 
+	 * @param importingClassMetadata
+	 * @return
+	 */
 	protected Set<String> getBasePackages(AnnotationMetadata importingClassMetadata) {
 		Map<String, Object> attributes = importingClassMetadata
 				.getAnnotationAttributes(EnableHttpClients.class.getCanonicalName());
@@ -98,6 +118,12 @@ public class HttpClientScannerRegistrar
 		return basePackages;
 	}
 
+	/**
+	 * 包扫描 ClassPathScanningCandidateComponentProvider是ClassPathBeanDefinitionScanner的基类,其本身主要作用是包扫描,
+	 * ClassPathBeanDefinitionScanner在其基础上做了注册功能,所以ClassPathBeanDefinitionScanner需要传入一个BeanDefinitionRegistry对象. 而ClassPathScanningCandidateComponentProvider扫描的对象是并不需要注册到BeanDefinitionRegistry中去的.
+	 * 
+	 * @return
+	 */
 	protected ClassPathScanningCandidateComponentProvider getScanner() {
 		return new ClassPathScanningCandidateComponentProvider(false, this.environment) {
 
@@ -125,6 +151,9 @@ public class HttpClientScannerRegistrar
 		};
 	}
 
+	/*
+	 * bean注册
+	 */
 	private void registerHttpClient(BeanDefinitionRegistry registry, AnnotationMetadata annotationMetadata) {
 		try {
 			String className = annotationMetadata.getClassName();
@@ -137,7 +166,7 @@ public class HttpClientScannerRegistrar
 			registry.registerBeanDefinition(beanClazz.getSimpleName(), definition);
 			;
 		} catch (ClassNotFoundException e) {
-			this.logger.error("Could not register target class: " + annotationMetadata.getClassName(), e);
+			logger.error("Could not register target class: " + annotationMetadata.getClassName(), e);
 		}
 	}
 

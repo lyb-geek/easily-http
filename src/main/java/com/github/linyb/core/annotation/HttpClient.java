@@ -9,6 +9,17 @@ import java.lang.annotation.Target;
 
 import com.github.linyb.core.enu.HttpMethod;
 
+/**
+ * 
+ * <p>
+ * Title:HttpClient
+ * </p>
+ * <p>
+ * Description: 通过该注解配置远程http调用地址，GET或者POST请求
+ * </p>
+ * 
+ * @author linyb
+ */
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

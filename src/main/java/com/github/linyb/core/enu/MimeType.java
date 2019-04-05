@@ -1,8 +1,17 @@
 package com.github.linyb.core.enu;
 
-public enum  MimeType {
-  APPLICATION_JSON, APPLICATION_FORM;
-
-
+/**
+ * 
+ * <p>
+ * Title:MimeType
+ * </p>
+ * <p>
+ * Description: 请求内容类型枚举
+ * </p>
+ * 
+ * @author linyb
+ */
+public enum MimeType {
+	APPLICATION_JSON, APPLICATION_FORM;
 
 }
